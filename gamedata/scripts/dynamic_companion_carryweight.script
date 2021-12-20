@@ -74,7 +74,7 @@ attach_slots = attach_slots and (attach_slots > 1) and math.floor(attach_slots) 
 table.sort(attach_weights, function(a,b) return a > b end)
 	if (#attach_weights > 0) then
 		for j = 1, attach_slots do
-		attach_carry = attach_weights[j] and (attach_carry + attach_weights[j])
+		attach_carry = attach_weights[j] and (attach_carry + attach_weights[j]) or attach_carry
 		end
 	end
 
