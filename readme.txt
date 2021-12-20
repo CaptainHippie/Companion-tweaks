@@ -1,4 +1,4 @@
-=== COMPANION CARRYWEIGHT AND LOOTING REWORK ===
+=== COMPANION CARRYWEIGHT AND LOOTING REWORK 1.1===
 
 Conflicts : none, fully QoL
 Risks : very low risk but needs further testing to be sure
@@ -21,6 +21,9 @@ no known bugs by far, but let me know if you find any. Note if putting artefacts
 Also I was trying to rework companion weapon selection based on target and also adding a method to tell your companion which gun to use.
 But there seems to be an engine bug so its put on halt
 I am open to suggestions as I want to do more stuff on companions
+
+changelog :
+1.1 fixed two crashes on line 77 and 86 on nil values
 
 Credits :
 Ravenascendant (co-author)
