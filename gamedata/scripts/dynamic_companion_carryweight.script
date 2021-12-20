@@ -40,7 +40,7 @@ local is_container = SYS_GetParam(0, itm_sec, "kind") == "i_arty_cont" or SYS_Ge
 		bkpk_weights[#bkpk_weights + 1] = ini_sys:r_float_ex(itm_sec,"additional_inventory_weight")
 	end
 
-	if is_container then
+	if is_container and ini_sys:r_float_ex(itm_sec,"additional_inventory_weight") then
 		attach_weights[#attach_weights + 1] = ini_sys:r_float_ex(itm_sec,"additional_inventory_weight")
 	end
 end
@@ -74,7 +74,7 @@ attach_slots = attach_slots and (attach_slots > 1) and math.floor(attach_slots) 
 table.sort(attach_weights, function(a,b) return a > b end)
 	if (#attach_weights > 0) then
 		for j = 1, attach_slots do
-		attach_carry = attach_carry + attach_weights[j]
+		attach_carry = attach_weights[j] and (attach_carry + attach_weights[j])
 		end
 	end
 
