@@ -82,7 +82,7 @@ local best_bkpk_carry = (#bkpk_weights > 0) and math.max(unpack(bkpk_weights)) o
 local is_exo = outfit and (not story_npc) and SYS_GetParam(0, outfit, "repair_type") == "outfit_exo"
 
 	if is_exo and (not allow_exo_backpack) then
-		extra_carry = outfit_carry
+		extra_carry = outfit_carry + attach_carry
 	else extra_carry = outfit_carry + best_bkpk_carry + story_carry + attach_carry
 	end
 bkpk_weights = {}
@@ -130,9 +130,8 @@ local function npc_on_item_take(npcx,itm)
 	local is_arft = (ini_sys:r_string_ex(sect,"kind") == "i_arty_junk") or (ini_sys:r_string_ex(sect,"kind") == "i_arty")
 	local radioactive = ini_sys:r_float_ex(sect,"radiation_restore_speed") > 0
 	if is_arft and radioactive then
-		alife_release(itm)
 		local new_sec = sect .. "_lead_box"
-		local spawning = ini_sys:section_exist(new_sec) and alife_create_item(new_sec, npcx)
+		local spawning = ini_sys:section_exist(new_sec) and alife_release(itm) and alife_create_item(new_sec, npcx)
 	end
 end
 
